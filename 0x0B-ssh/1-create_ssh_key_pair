@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-# Generate ssh-keygen with private key - school, bits - 4096 and passphrase - betty
+# Generate ssh-keygen with private key - school
+# Bits - 4096
+# Passphrase - betty
 
 ssh-keygen -b 4096 -f school -N betty
