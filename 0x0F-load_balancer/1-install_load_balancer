@@ -31,11 +31,11 @@ CONFIG_WORDS=$(grep -Eco "$DOMAIN_NAME-backend" < $CONFIG_FILE)
 if [ "$(grep -Eco '^ENABLED=[01]$' < $INIT_FILE)" -gt 0 ]; then
 	sed -i 's/^ENABLED=0$/ENABLED=1/' "$INIT_FILE"
 else
-	echo 'ENABLED=1' >> $INIT_FILE
+	echo 'ENABLED=1' | sudo tee  $INIT_FILE
 fi
 
 if [ "$CONFIG_WORDS" -eq 0 ]; then
-	echo -e "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
+	echo -e "$HAPROXY_LB_CONFIG" | sudo tee $CONFIG_FILE
 else
 	start_tkn="#--$DOMAIN_NAME-params-begin--"
 	end_tkn="#--$DOMAIN_NAME-params-end--"
@@ -48,7 +48,7 @@ else
 fi
 
 if [ "$(pgrep -c haproxy)" -le 0 ]; then
-	service haproxy start
+	sudo service haproxy start
 else
-	service haproxy restart
+	sudo service haproxy restart
 fi
