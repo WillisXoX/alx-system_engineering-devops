@@ -1,0 +1,5 @@
+# Export primary database
+sudo mysqldump -u root tyrell_corp -p > tyrell_corp.sql
+
+# Copy primary database to replica server 
+scp -o "StrictHostKeyChecking=no" -i ../0x0B-ssh/school_id tyrell_corp.sql ubuntu@35.175.134.25:/tmp/
