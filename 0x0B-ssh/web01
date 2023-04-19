@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Connect to server using ssh
+# With private key ~/.ssh/school, user ubuntu at port 8.8.8.8
+
+ssh -i ~/.ssh/id_rsa ubuntu@34.205.65.100
