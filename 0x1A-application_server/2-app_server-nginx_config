@@ -1,3 +1,6 @@
+# Server 0-hello_route.py on route /airbnb-onepage/ listening on port 5000. Served both locally and on our public Ip adress
+# Nginx config
+
 server {
     listen 80;
     listen [::]:80 default_server;
